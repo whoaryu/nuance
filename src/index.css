@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Sora', 'Inter', 'SF Pro Text', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  color: #1c1b1a;
+  background-color: #fdf8f3;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(247, 208, 96, 0.25), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(180, 213, 255, 0.35), transparent 50%),
+    #fdf8f3;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgba(32, 64, 128, 0.15);
+  color: #111827;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4c5b2;
+  border-radius: 999px;
+}

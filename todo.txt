@@ -1,0 +1,202 @@
+A modern, responsive Single Page Application (SPA) built with React, consuming the public Fake Store API, featuring product listing, product details, cart flow, checkout, caching, and clean app structure.
+
+This project follows the functional requirements, constraints, and expectations mentioned in the assignment PDF.
+
+🚀 Tech Stack
+
+React (Vite)
+
+React Router – SPA client-side routing
+
+Zustand – global cart state (lightweight alternative to Redux Toolkit)
+
+Custom Hooks – data fetching + caching
+
+Tailwind CSS – fast styling
+
+Fake Store API – product data
+
+LocalStorage – caching + cart persistence
+
+🧭 Project Features (as per assignment)
+✅ Product Listing (/)
+
+Responsive product grid
+
+Search by title
+
+Category filter
+
+Loading + error states
+
+Cached product list
+
+✅ Product Detail (/product/:id)
+
+Image, title, description, rating
+
+Quantity selector (1–5)
+
+Add to cart
+
+Cached product detail
+
+✅ Shopping Cart (/cart)
+
+Thumbnail, title, price, quantity selector (1–10)
+
+Remove item
+
+Subtotal + grand total
+
+“Proceed to Checkout”
+
+✅ Checkout (/checkout)
+
+Order summary
+
+Form: name, email, address
+
+Client-side validation
+
+“Place Order” → clears cart
+
+✅ Data Caching
+
+In-memory + localStorage caching
+
+Avoids redundant API calls
+
+✅ State Management
+
+Global cart via Zustand
+
+Local state for search, filters, and form fields
+
+✅ Clean Project Structure
+src/
+  components/
+  pages/
+  hooks/
+  api/
+  store/
+  utils/
+  App.jsx
+
+📦 Installation & Setup
+git clone <repo-url>
+cd <project-folder>
+
+npm install
+npm run dev
+
+
+Open:
+
+http://localhost:5173
+
+📁 Folder Structure
+src/
+├── api/            # API wrappers
+├── components/     # Reusable UI components
+├── hooks/          # Custom hooks for data fetching + caching
+├── pages/          # Route-level pages
+├── store/          # Zustand store (cart)
+├── utils/          # Helpers
+└── App.jsx
+
+🧩 Key Design Decisions
+1. Custom Hooks for Fetching
+
+To avoid “fetching inside components,” all data logic lives inside:
+
+useProducts()
+useProduct(id)
+useCategories()
+
+
+Each handles:
+
+Fetching
+
+LocalStorage caching
+
+Loading/error states
+
+2. Zustand for Cart
+
+Chosen over Redux Toolkit because:
+
+Less boilerplate
+
+Faster to implement
+
+Perfect for small apps
+
+Still global and predictable
+
+3. Two-Level Caching
+
+In-memory for fast revisits
+
+LocalStorage to persist across refresh
+Improves perceived performance and reduces API load.
+
+4. SPA Routing
+
+Using React Router:
+
+/
+product/:id
+/cart
+/checkout
+
+5. Edge Cases Covered
+
+API failures
+
+Loading placeholders
+
+Empty search results
+
+Product not found
+
+Invalid quantity
+
+Empty cart
+
+Form validation
+
+Offline-safe cached content
+
+🧪 Scripts
+npm install   # Install deps
+npm run dev   # Run development server
+npm run build # Build for production
+
+🌐 Hosting (Optional Bonus)
+
+Deployable on:
+
+Vercel
+
+Netlify
+
+GitHub Pages
+
+Build:
+
+npm run build
+
+
+Upload the dist/ folder.
+
+⚠️ Assignment Constraint
+
+No AI tools were used to generate the project code.
+This README summarizes the architecture and decisions only.
+
+📚 API Used
+
+Fake Store API
+https://fakestoreapi.com/
