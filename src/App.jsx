@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { selectCartCount, selectCartTotal, useCartStore } from './store/cart'
 import { formatCurrency } from './utils/format'
+import NewsletterModal from './components/NewsletterModal'
 
 const navItems = [
   { label: 'Collection', to: '/' },
@@ -28,6 +29,7 @@ export default function App() {
   const cartCount = useCartStore(selectCartCount)
   const subtotal = useCartStore(selectCartTotal)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showNewsletter, setShowNewsletter] = useState(false)
   const location = useLocation()
 
   const closeMenu = () => setMenuOpen(false)
@@ -38,6 +40,23 @@ export default function App() {
     return location.pathname.startsWith(path)
   }
 
+  useEffect(() => {
+    const hasSeen = window.localStorage.getItem('nuance_newsletter_seen')
+    if (!hasSeen) {
+      const timer = setTimeout(() => setShowNewsletter(true), 1200)
+      return () => clearTimeout(timer)
+    }
+    return undefined
+  }, [])
+
+  const handleNewsletterClose = (accepted) => {
+    window.localStorage.setItem('nuance_newsletter_seen', 'true')
+    setShowNewsletter(false)
+    if (accepted) {
+      // placeholder for API call
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#f9f6f1] text-stone-900">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-4 pb-12 pt-6 sm:px-6 lg:px-8">
@@ -45,7 +64,6 @@ export default function App() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.6em] text-stone-400">Nuance</p>
-              <p className="text-xl font-semibold text-stone-900">Edition · Resort 25</p>
             </div>
 
             <div className="hidden flex-1 items-center justify-center gap-3 rounded-2xl bg-stone-100/80 px-4 py-3 text-xs text-stone-600 sm:flex">
@@ -142,6 +160,7 @@ export default function App() {
           <Outlet />
         </main>
       </div>
+      <NewsletterModal open={showNewsletter} onClose={handleNewsletterClose} />
     </div>
   )
 }

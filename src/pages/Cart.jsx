@@ -5,6 +5,29 @@ import PageTitle from '../components/PageTitle'
 import { CART_LIMITS, selectCartTotal, useCartStore } from '../store/cart'
 import { formatCurrency } from '../utils/format'
 
+function EmptyBagIllustration() {
+  return (
+    <div className="rounded-full bg-stone-50 p-6 text-stone-300">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="24" y="42" width="72" height="56" rx="12" stroke="currentColor" strokeWidth="2" />
+        <path
+          d="M48 42c0-12 7.5-22 18-22s18 10 18 22"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <path d="M36 62h48" stroke="currentColor" strokeWidth="2" strokeDasharray="6 6" strokeLinecap="round" />
+        <path
+          d="M50 74c4 4 16 4 20 0"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
+  )
+}
+
 export default function CartPage() {
   const navigate = useNavigate()
   const items = useCartStore((state) => state.items)
@@ -19,6 +42,7 @@ export default function CartPage() {
         message="Add a couple of products to see them listed here."
         actionLabel="Browse products"
         onAction={() => navigate('/')}
+        illustration={<EmptyBagIllustration />}
       />
     )
   }
