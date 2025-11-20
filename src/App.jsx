@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { selectCartCount, selectCartTotal, useCartStore } from './store/cart'
 import { formatCurrency } from './utils/format'
 import NewsletterModal from './components/NewsletterModal'
 
+// main navigation items
 const navItems = [
   { label: 'Collection', to: '/' },
   { label: 'Bag', to: '/cart' },
   { label: 'Checkout', to: '/checkout' },
 ]
 
+// trust badges shown in header
 const badges = [
   {
     label: 'Free doorstep returns',
@@ -25,14 +27,17 @@ const badges = [
   },
 ]
 
+// main app layout component
 export default function App() {
   const cartCount = useCartStore(selectCartCount)
   const subtotal = useCartStore(selectCartTotal)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false) // mobile menu state
   const [showNewsletter, setShowNewsletter] = useState(false)
   const location = useLocation()
 
   const closeMenu = () => setMenuOpen(false)
+  
+  // check if a nav item is active based on current route
   const isActivePath = (path) => {
     if (path === '/') {
       return location.pathname === '/'
@@ -40,6 +45,7 @@ export default function App() {
     return location.pathname.startsWith(path)
   }
 
+  // show newsletter modal on first visit (with a small delay)
   useEffect(() => {
     const hasSeen = window.localStorage.getItem('nuance_newsletter_seen')
     if (!hasSeen) {
@@ -53,15 +59,15 @@ export default function App() {
     window.localStorage.setItem('nuance_newsletter_seen', 'true')
     setShowNewsletter(false)
     if (accepted) {
-      // placeholder for API call
+      // TODO: send email to backend
     }
   }
 
   return (
     <div className="min-h-screen text-stone-900">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 pb-16 pt-8 sm:px-6 lg:px-8">
-        <header className="group relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 px-6 py-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:px-8">
-          <div className="absolute inset-0 bg-linear-to-br from-purple-50/30 via-transparent to-blue-50/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <header className="group relative overflow-visible rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 px-6 py-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:overflow-hidden sm:px-8">
+          <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-purple-50/30 via-transparent to-blue-50/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           <div className="relative flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="font-serif text-2xl font-semibold tracking-tight text-stone-900">Nuance</p>
@@ -162,6 +168,26 @@ export default function App() {
           <Outlet />
         </main>
       </div>
+      {(() => {
+        const hideFloatingBag = location.pathname.startsWith('/cart') || location.pathname.startsWith('/checkout')
+        if (hideFloatingBag) return null
+        return (
+          <Link
+            to="/cart"
+            aria-label="Open shopping bag"
+            className="fixed bottom-6 right-4 z-30 sm:hidden"
+          >
+            <span className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-stone-900 to-stone-700 text-2xl text-white shadow-xl shadow-stone-900/30 transition hover:scale-105">
+              🛍️
+              {cartCount > 0 && (
+                <span className="absolute -right-1 -top-1 rounded-full bg-rose-500 px-2 py-0.5 text-xs font-semibold text-white shadow">
+                  {cartCount}
+                </span>
+              )}
+            </span>
+          </Link>
+        )
+      })()}
       <NewsletterModal open={showNewsletter} onClose={handleNewsletterClose} />
     </div>
   )

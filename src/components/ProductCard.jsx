@@ -4,6 +4,7 @@ import { useCartStore, CART_LIMITS } from '../store/cart'
 import QuantityInput from './QuantityInput'
 import useToast from '../hooks/useToast'
 
+// product card component for the grid view
 export default function ProductCard({ product }) {
   if (!product) return null
   const price = formatCurrency(product.price)
@@ -11,6 +12,7 @@ export default function ProductCard({ product }) {
   const addItem = useCartStore((state) => state.addItem)
   const updateQuantity = useCartStore((state) => state.updateQuantity)
   const removeItem = useCartStore((state) => state.removeItem)
+  // check if this product is already in cart
   const cartQuantity = useCartStore(
     (state) => state.items.find((item) => item.id === product.id)?.quantity ?? 0,
   )
@@ -66,14 +68,14 @@ export default function ProductCard({ product }) {
         {isInCart ? (
           <div className="mt-4 rounded-2xl border border-stone-200/60 bg-linear-to-br from-stone-50/80 to-stone-100/40 px-4 py-3 backdrop-blur-sm">
             <div className="flex items-center justify-between gap-3">
-              <QuantityInput
-                value={cartQuantity}
-                min={CART_LIMITS.min}
-                max={CART_LIMITS.max}
-                onChange={handleQuantityChange}
-                label="In bag"
+                <QuantityInput
+                  value={cartQuantity}
+                  min={CART_LIMITS.min}
+                  max={CART_LIMITS.max}
+                  onChange={handleQuantityChange}
+                  label="In bag"
                 inline
-              />
+                />
               <button
                 type="button"
                 onClick={handleRemove}
@@ -104,7 +106,7 @@ export default function ProductCard({ product }) {
             onClick={handleAdd}
           >
             <span className="flex items-center justify-center gap-2">
-              Add to bag
+            Add to bag
               <span className="transition-transform duration-300 group-hover/add:translate-x-1">→</span>
             </span>
           </button>

@@ -24,12 +24,12 @@ export default function CheckoutPage() {
   const toast = useToast()
   const [form, setForm] = useState(INITIAL_FORM)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle')
+  const [status, setStatus] = useState('idle') // idle | success
   const [paymentMethod, setPaymentMethod] = useState('upi')
-  const [lastOrder, setLastOrder] = useState(null)
+  const [lastOrder, setLastOrder] = useState(null) // store order data for invoice download
 
   const isDisabled = useMemo(() => items.length === 0, [items.length])
-  const shipping = total > 0 ? 7.5 : 0
+  const shipping = total > 0 ? 7.5 : 0 // flat shipping fee
 
   if (items.length === 0 && status !== 'success') {
     return (
@@ -47,6 +47,7 @@ export default function CheckoutPage() {
     setForm((previous) => ({ ...previous, [name]: value }))
   }
 
+  // basic validation - could be more robust but this works for now
   const validate = () => {
     const nextErrors = {}
     if (!form.name.trim()) nextErrors.name = 'Name is required.'
@@ -67,12 +68,13 @@ export default function CheckoutPage() {
 
     if (Object.keys(validation).length > 0) return
 
+    // build order object for invoice
     const orderItems = items.map((item) => ({
       title: item.title,
       price: item.price,
       quantity: item.quantity,
     }))
-    const orderId = `NU-${Date.now().toString().slice(-6)}`
+    const orderId = `NU-${Date.now().toString().slice(-6)}` // simple ID from timestamp
     const orderDate = new Intl.DateTimeFormat('en-IN', {
       day: '2-digit',
       month: 'short',

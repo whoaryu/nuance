@@ -15,9 +15,10 @@ export default function HomePage() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('all')
   const [page, setPage] = useState(1)
-  const gridRef = useRef(null)
+  const gridRef = useRef(null) // not used yet but keeping for scroll-to-top later
   const PER_PAGE = 9
 
+  // filter products by search and category
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesCategory = category === 'all' || product.category === category
@@ -27,15 +28,18 @@ export default function HomePage() {
   }, [products, search, category])
 
   const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PER_PAGE))
+  // paginate the filtered results
   const paginatedProducts = filteredProducts.slice(
     (page - 1) * PER_PAGE,
     page * PER_PAGE,
   )
 
+  // reset to page 1 when filters change
   useEffect(() => {
     setPage(1)
   }, [search, category])
 
+  // if current page is out of bounds (e.g. after filtering), fix it
   useEffect(() => {
     if (page > totalPages) {
       setPage(totalPages)

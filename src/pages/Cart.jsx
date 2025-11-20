@@ -5,6 +5,7 @@ import PageTitle from '../components/PageTitle'
 import { CART_LIMITS, selectCartTotal, useCartStore } from '../store/cart'
 import { formatCurrency } from '../utils/format'
 
+// empty cart illustration
 function EmptyBagIllustration() {
   return (
     <div className="rounded-full bg-stone-50 p-6 text-stone-300">
@@ -35,6 +36,7 @@ export default function CartPage() {
   const updateQuantity = useCartStore((state) => state.updateQuantity)
   const removeItem = useCartStore((state) => state.removeItem)
 
+  // show empty state if cart is empty
   if (items.length === 0) {
     return (
       <StateMessage
@@ -81,7 +83,7 @@ export default function CartPage() {
             className="group/checkout w-full rounded-2xl bg-linear-to-br from-stone-900 to-stone-700 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-stone-900/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/30"
           >
             <span className="flex items-center justify-center gap-2">
-              Proceed to Checkout
+            Proceed to Checkout
               <span className="transition-transform duration-300 group-hover/checkout:translate-x-1">→</span>
             </span>
           </button>

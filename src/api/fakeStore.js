@@ -1,5 +1,6 @@
 import client from './client'
 
+// API endpoints - keeping them centralized makes it easier to change later
 const ENDPOINTS = {
   products: '/products',
   product: (id) => `/products/${id}`,

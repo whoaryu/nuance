@@ -16,12 +16,12 @@ export default function CartItem({ item, onQuantityChange, onRemove, limits }) {
       <div className="absolute inset-0 bg-linear-to-br from-purple-50/0 via-transparent to-blue-50/0 opacity-0 transition-opacity duration-300 group-hover:from-purple-50/30 group-hover:to-blue-50/15 group-hover:opacity-100" />
       <div className="relative flex items-center gap-5">
         <div className="overflow-hidden rounded-2xl border border-stone-200/60 bg-linear-to-br from-stone-50 to-stone-100/50 p-4 shadow-sm">
-          <img
-            src={item.image}
-            alt={item.title}
+        <img
+          src={item.image}
+          alt={item.title}
             className="h-24 w-24 object-contain transition-transform duration-500 group-hover:scale-110"
-            loading="lazy"
-          />
+          loading="lazy"
+        />
         </div>
         <div>
           <p className="text-lg font-semibold leading-snug tracking-tight">{item.title}</p>

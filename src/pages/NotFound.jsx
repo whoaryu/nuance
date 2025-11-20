@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import StateMessage from '../components/StateMessage'
 
+// simple 404 illustration
 function CompassIllustration() {
   return (
     <div className="rounded-full bg-stone-50 p-6 text-stone-300">

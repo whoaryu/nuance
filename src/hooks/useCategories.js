@@ -4,6 +4,7 @@ import { getCachedValue, setCachedValue } from '../utils/cache'
 
 const CACHE_KEY = 'product_categories'
 
+// same pattern as useProducts, just for categories
 export function useCategories() {
   const [categories, setCategories] = useState(() => getCachedValue(CACHE_KEY) ?? [])
   const [loading, setLoading] = useState(categories.length === 0)

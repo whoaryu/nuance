@@ -9,6 +9,7 @@ import { formatCurrency } from '../utils/format'
 import { CART_LIMITS, useCartStore } from '../store/cart'
 import useToast from '../hooks/useToast'
 
+// different limits for detail page vs cart (detail page allows up to 5)
 const DETAIL_LIMITS = { min: 1, max: 5 }
 
 export default function ProductPage() {
@@ -17,11 +18,12 @@ export default function ProductPage() {
   const addItem = useCartStore((state) => state.addItem)
   const updateQuantity = useCartStore((state) => state.updateQuantity)
   const removeItem = useCartStore((state) => state.removeItem)
+  // check if product is in cart
   const cartQuantity = useCartStore(
     (state) => state.items.find((entry) => entry.id === Number(productId))?.quantity ?? 0,
   )
   const toast = useToast()
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1) // quantity selector when not in cart
 
   const price = useMemo(() => formatCurrency(product?.price ?? 0), [product?.price])
 
@@ -102,14 +104,14 @@ export default function ProductPage() {
           {cartQuantity > 0 ? (
             <div className="rounded-2xl border border-stone-200/60 bg-linear-to-br from-stone-50/80 to-stone-100/40 px-6 py-5 backdrop-blur-sm">
               <div className="flex items-center justify-between gap-4">
-                <QuantityInput
-                  value={cartQuantity}
-                  min={CART_LIMITS.min}
-                  max={CART_LIMITS.max}
-                  onChange={handleCartQuantity}
-                  label="In bag"
+              <QuantityInput
+                value={cartQuantity}
+                min={CART_LIMITS.min}
+                max={CART_LIMITS.max}
+                onChange={handleCartQuantity}
+                label="In bag"
                   inline
-                />
+              />
                 <button
                   type="button"
                   onClick={handleRemove}

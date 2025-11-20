@@ -1,5 +1,6 @@
 import { formatCurrency } from '../utils/format'
 
+// order summary sidebar component
 export default function OrderSummary({ items, total }) {
   const shipping = total > 0 ? 7.5 : 0
   const grandTotal = total + shipping

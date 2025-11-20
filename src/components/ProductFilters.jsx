@@ -1,3 +1,4 @@
+// search and category filter component
 export default function ProductFilters({
   search,
   onSearchChange,

@@ -4,7 +4,9 @@ import { getCachedValue, setCachedValue } from '../utils/cache'
 
 const keyFor = (id) => `product_${id}`
 
+// hook for fetching a single product by ID
 export function useProduct(productId) {
+  // check cache first
   const [product, setProduct] = useState(() => getCachedValue(keyFor(productId)))
   const [loading, setLoading] = useState(!product)
   const [error, setError] = useState(null)
@@ -24,6 +26,7 @@ export function useProduct(productId) {
     }
   }, [productId])
 
+  // fetch if we don't have it cached
   useEffect(() => {
     if (!product) {
       loadProduct()

@@ -10,6 +10,7 @@ import CheckoutPage from './pages/Checkout.jsx'
 import NotFoundPage from './pages/NotFound.jsx'
 import ToastProvider from './providers/ToastProvider.jsx'
 
+// route config - App is the layout, children are the pages
 const router = createBrowserRouter([
   {
     path: '/',
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       { path: 'product/:productId', element: <ProductPage /> },
       { path: 'cart', element: <CartPage /> },
       { path: 'checkout', element: <CheckoutPage /> },
-      { path: '*', element: <NotFoundPage /> },
+      { path: '*', element: <NotFoundPage /> }, // catch-all for 404
     ],
   },
 ])

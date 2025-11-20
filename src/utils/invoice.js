@@ -1,5 +1,6 @@
 import { formatCurrency } from './format'
 
+// company details for invoice
 const COMPANY = {
   name: 'Nuance Retail Pvt. Ltd.',
   addressLine1: '3rd Floor, Bandra Kurla Complex',
@@ -8,6 +9,7 @@ const COMPANY = {
   support: 'support@nuance.store · +91 80 4000 0000',
 }
 
+// build HTML for invoice - simple but works
 function buildInvoiceHTML(order) {
   return `
 <!DOCTYPE html>
@@ -107,6 +109,7 @@ function buildInvoiceHTML(order) {
 `
 }
 
+// opens invoice in new window and triggers print dialog
 export function downloadInvoice(order) {
   if (!order) return
 
@@ -115,6 +118,6 @@ export function downloadInvoice(order) {
   invoiceWindow.document.write(html)
   invoiceWindow.document.close()
   invoiceWindow.focus()
-  invoiceWindow.print()
+  invoiceWindow.print() // triggers browser print dialog
 }
 

@@ -1,9 +1,11 @@
+// toast variant styles
 const VARIANT_STYLES = {
   default: 'border-slate-200 bg-white text-slate-900',
   success: 'border-emerald-200 bg-emerald-50 text-emerald-900',
   danger: 'border-rose-200 bg-rose-50 text-rose-900',
 }
 
+// renders stack of toast notifications
 export default function ToastStack({ toasts, onDismiss }) {
   if (!toasts.length) return null
 
@@ -31,9 +33,4 @@ export default function ToastStack({ toasts, onDismiss }) {
       ))}
     </div>
   )
-}
-const toneStyles = {
-  neutral: 'border-stone-200 bg-white text-stone-900',
-  success: 'border-emerald-200 bg-emerald-50 text-emerald-900',
-  danger: 'border-rose-200 bg-rose-50 text-rose-900',
 }
