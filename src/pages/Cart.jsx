@@ -67,20 +67,23 @@ export default function CartPage() {
           ))}
         </div>
 
-        <aside className="h-fit space-y-4 rounded-[2rem] border border-stone-200 bg-white p-6 text-stone-900 shadow-sm shadow-stone-900/5">
+        <aside className="h-fit space-y-6 overflow-hidden rounded-[2rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 p-8 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-stone-400">Cart total</p>
-            <p className="text-4xl font-semibold text-stone-900">{formatCurrency(total)}</p>
-            <p className="mt-3 text-sm text-stone-500">
-              Taxes auto-adjust at checkout; shipping is a flat {formatCurrency(7.5)}.
+            <p className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-purple-400">Order Summary</p>
+            <p className="font-serif mt-3 text-5xl font-semibold tracking-tight text-stone-900">{formatCurrency(total)}</p>
+            <p className="mt-4 text-sm leading-relaxed text-stone-500">
+              Taxes calculated at checkout. Complimentary shipping on orders over {formatCurrency(50)}.
             </p>
           </div>
           <button
             type="button"
             onClick={() => navigate('/checkout')}
-            className="w-full rounded-2xl bg-stone-900 px-4 py-3 text-base font-semibold text-white transition hover:-translate-y-0.5"
+            className="group/checkout w-full rounded-2xl bg-linear-to-br from-stone-900 to-stone-700 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-stone-900/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/30"
           >
-            Proceed to Checkout
+            <span className="flex items-center justify-center gap-2">
+              Proceed to Checkout
+              <span className="transition-transform duration-300 group-hover/checkout:translate-x-1">→</span>
+            </span>
           </button>
         </aside>
       </div>

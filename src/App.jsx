@@ -58,20 +58,22 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f9f6f1] text-stone-900">
-      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-4 pb-12 pt-6 sm:px-6 lg:px-8">
-        <header className="rounded-[36px] border border-stone-200 bg-white/95 px-4 py-5 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)] sm:px-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+    <div className="min-h-screen text-stone-900">
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+        <header className="group relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 px-6 py-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:px-8">
+          <div className="absolute inset-0 bg-linear-to-br from-purple-50/30 via-transparent to-blue-50/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="relative flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.6em] text-stone-400">Nuance</p>
+              <p className="font-serif text-2xl font-semibold tracking-tight text-stone-900">Nuance</p>
+              <p className="text-[0.65rem] uppercase tracking-[0.2em] text-stone-400">Curated Collection</p>
             </div>
 
-            <div className="hidden flex-1 items-center justify-center gap-3 rounded-2xl bg-stone-100/80 px-4 py-3 text-xs text-stone-600 sm:flex">
+            <div className="hidden flex-1 items-center justify-center gap-3 rounded-2xl bg-linear-to-r from-stone-50/50 to-stone-100/30 px-4 py-3 text-xs text-stone-600 backdrop-blur-sm sm:flex">
               {badges.map((badge) => (
-                <div key={badge.label} className="flex items-center gap-2 rounded-xl border border-white/60 bg-white px-3 py-2 shadow-sm">
-                  <div className="text-xs font-semibold">
+                <div key={badge.label} className="group/badge flex items-center gap-2 rounded-xl border border-stone-200/60 bg-white/80 px-3 py-2 shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-purple-200/60 hover:shadow-md">
+                  <div className="text-xs font-medium">
                     {badge.label}
-                    <div className="text-[10px] uppercase tracking-[0.3em] text-stone-400">
+                    <div className="text-[10px] font-normal uppercase tracking-[0.25em] text-stone-400 transition-colors group-hover/badge:text-purple-400">
                       {badge.detail}
                     </div>
                   </div>
@@ -97,20 +99,20 @@ export default function App() {
             <NavLink
               to="/cart"
               onClick={closeMenu}
-              className="flex items-center gap-3 rounded-full border border-stone-200 bg-white px-4 py-2 text-sm font-semibold text-stone-600 transition hover:text-stone-900"
+              className="group/cart flex items-center gap-3 rounded-full border border-stone-200/60 bg-linear-to-br from-white to-stone-50/50 px-4 py-2 text-sm font-medium text-stone-600 shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-purple-200/60 hover:text-stone-900 hover:shadow-md"
             >
               <span className="relative">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-stone-900 text-white">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-linear-to-br from-stone-900 to-stone-700 text-lg shadow-lg transition-transform duration-300 group-hover/cart:scale-110">
                   👜
                 </span>
                 {cartCount > 0 && (
-                  <span className="absolute -right-1 -top-1 rounded-full bg-rose-500 px-2 py-0.5 text-xs font-bold text-white">
+                  <span className="absolute -right-1 -top-1 animate-pulse rounded-full bg-linear-to-br from-rose-500 to-rose-600 px-2 py-0.5 text-xs font-bold text-white shadow-lg">
                     {cartCount}
                   </span>
                 )}
               </span>
-              <div className="text-left text-xs uppercase tracking-[0.3em] text-stone-400">
-                Bag
+              <div className="text-left text-[0.65rem] uppercase tracking-[0.25em] text-stone-400">
+                Shopping Bag
                 <p className="text-base font-semibold text-stone-900">
                   {formatCurrency(subtotal)}
                 </p>
@@ -118,15 +120,15 @@ export default function App() {
             </NavLink>
           </div>
 
-          <div className="mt-5 hidden items-center justify-center gap-2 sm:flex">
+          <div className="mt-6 hidden items-center justify-center gap-2 sm:flex">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
                   isActivePath(item.to)
-                    ? 'bg-stone-900 text-white shadow-sm shadow-stone-900/20'
-                    : 'border border-transparent text-stone-500 hover:text-stone-900'
+                    ? 'bg-linear-to-br from-stone-900 to-stone-700 text-white shadow-lg shadow-stone-900/25 hover:shadow-xl hover:shadow-stone-900/30'
+                    : 'border border-stone-200/60 bg-white/50 text-stone-600 backdrop-blur-sm hover:scale-105 hover:border-purple-200/60 hover:bg-white hover:text-stone-900 hover:shadow-md'
                 }`}
               >
                 {item.label}
