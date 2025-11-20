@@ -33,11 +33,11 @@ export default function ProductCard({ product }) {
   }
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-4xl border border-stone-200/60 bg-linear-to-br from-white via-white to-stone-50/30 p-6 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset]">
+    <article className="group relative flex flex-col overflow-hidden rounded-4xl border border-stone-200/60 bg-linear-to-br from-white via-white to-stone-50/30 p-4 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:p-6">
       <div className="absolute inset-0 bg-linear-to-br from-purple-50/0 via-transparent to-blue-50/0 opacity-0 transition-opacity duration-500 group-hover:from-purple-50/40 group-hover:to-blue-50/20 group-hover:opacity-100" />
       <Link
         to={`/product/${product.id}`}
-        className="relative mb-5 flex h-56 items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br from-stone-50 to-stone-100/50 shadow-inner"
+        className="relative mb-4 flex h-48 items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br from-stone-50 to-stone-100/50 shadow-inner sm:mb-5 sm:h-56"
         aria-label={`View ${product.title}`}
       >
         <img
@@ -48,7 +48,7 @@ export default function ProductCard({ product }) {
         />
       </Link>
       <div className="relative flex flex-1 flex-col">
-        <h3 className="line-clamp-2 text-lg font-semibold leading-snug tracking-tight">{product.title}</h3>
+        <h3 className="line-clamp-2 text-base font-semibold leading-snug tracking-tight sm:text-lg">{product.title}</h3>
         <p className="mt-3 flex items-center gap-2 text-sm text-stone-500">
           <span className="rounded-full bg-linear-to-br from-stone-900 to-stone-700 px-4 py-1.5 font-semibold text-white shadow-md">
             {price}
@@ -57,7 +57,7 @@ export default function ProductCard({ product }) {
             {product.category}
           </span>
         </p>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-500">{truncateText(product.description)}</p>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-stone-500">{truncateText(product.description)}</p>
         <Link
           to={`/product/${product.id}`}
           className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-stone-600 transition-all duration-300 hover:gap-3 hover:text-stone-900"
@@ -102,7 +102,7 @@ export default function ProductCard({ product }) {
         ) : (
           <button
             type="button"
-            className="group/add mt-4 rounded-2xl bg-linear-to-br from-stone-900 to-stone-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-stone-900/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/30"
+            className="group/add mt-3 rounded-2xl bg-linear-to-br from-stone-900 to-stone-700 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-stone-900/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/30"
             onClick={handleAdd}
           >
             <span className="flex items-center justify-center gap-2">

@@ -76,21 +76,21 @@ export default function ProductPage() {
         title={product.title}
         subtitle="Detailed view with quantity guardrails and interaction copy."
       />
-      <div className="grid gap-10 lg:grid-cols-2">
-        <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white via-white to-stone-50/30 p-12 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset]">
+      <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
+        <div className="group relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white via-white to-stone-50/30 p-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:p-10 lg:p-12">
           <div className="absolute inset-0 bg-linear-to-br from-purple-50/0 via-transparent to-blue-50/0 opacity-0 transition-opacity duration-500 group-hover:from-purple-50/40 group-hover:to-blue-50/20 group-hover:opacity-100" />
           <img
             src={product.image}
             alt={product.title}
-            className="relative mx-auto h-96 w-full max-w-md object-contain drop-shadow-[0_25px_35px_rgba(15,23,42,0.15)] transition-all duration-700 group-hover:scale-105 group-hover:drop-shadow-[0_35px_45px_rgba(15,23,42,0.2)]"
+            className="relative mx-auto h-80 w-full max-w-md object-contain drop-shadow-[0_25px_35px_rgba(15,23,42,0.15)] transition-all duration-700 group-hover:scale-105 group-hover:drop-shadow-[0_35px_45px_rgba(15,23,42,0.2)] sm:h-96"
           />
         </div>
-        <div className="flex flex-col gap-6 overflow-hidden rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 p-10 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl">
+        <div className="flex flex-col gap-5 overflow-hidden rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 p-6 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl sm:gap-6 sm:p-10">
           <div>
             <p className="inline-flex rounded-full border border-purple-200/60 bg-linear-to-br from-purple-50 to-purple-100/50 px-4 py-1.5 text-[0.65rem] font-medium uppercase tracking-[0.3em] text-purple-600 shadow-sm backdrop-blur-sm">
               {product.category}
             </p>
-            <p className="font-serif mt-4 text-5xl font-semibold tracking-tight text-stone-900">{price}</p>
+            <p className="font-serif mt-4 text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">{price}</p>
             <div className="mt-3 flex items-center gap-2 text-sm text-stone-500">
               <span className="text-lg">⭐</span>
               <span className="font-medium">{product?.rating?.rate ?? 0}</span>
@@ -99,10 +99,10 @@ export default function ProductPage() {
             </div>
           </div>
 
-          <p className="text-base leading-relaxed text-stone-600">{product.description}</p>
+          <p className="text-sm leading-relaxed text-stone-600 sm:text-base">{product.description}</p>
 
           {cartQuantity > 0 ? (
-            <div className="rounded-2xl border border-stone-200/60 bg-linear-to-br from-stone-50/80 to-stone-100/40 px-6 py-5 backdrop-blur-sm">
+            <div className="rounded-2xl border border-stone-200/60 bg-linear-to-br from-stone-50/80 to-stone-100/40 px-4 py-4 backdrop-blur-sm sm:px-6 sm:py-5">
               <div className="flex items-center justify-between gap-4">
               <QuantityInput
                 value={cartQuantity}
@@ -115,7 +115,7 @@ export default function ProductPage() {
                 <button
                   type="button"
                   onClick={handleRemove}
-                  className="group/remove flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-stone-200/60 bg-white text-stone-400 shadow-sm transition-all duration-300 hover:scale-110 hover:border-rose-300/60 hover:bg-linear-to-br hover:from-rose-50 hover:to-rose-100/50 hover:text-rose-600 hover:shadow-md"
+                  className="group/remove flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-stone-200/60 bg-white text-stone-400 shadow-sm transition-all duration-300 hover:scale-110 hover:border-rose-300/60 hover:bg-linear-to-br hover:from-rose-50 hover:to-rose-100/50 hover:text-rose-600 hover:shadow-md sm:h-11 sm:w-11"
                   aria-label="Remove from bag"
                 >
                   <svg
@@ -150,7 +150,7 @@ export default function ProductPage() {
               <button
                 type="button"
                 onClick={handleAdd}
-                className="group/add w-full rounded-2xl bg-linear-to-br from-stone-900 to-stone-700 px-6 py-4 text-lg font-semibold text-white shadow-lg shadow-stone-900/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/30"
+                className="group/add w-full rounded-2xl bg-linear-to-br from-stone-900 to-stone-700 px-5 py-3 text-base font-semibold text-white shadow-lg shadow-stone-900/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/30 sm:px-6 sm:py-4 sm:text-lg"
               >
                 <span className="flex items-center justify-center gap-2">
                   Add to Shopping Bag

@@ -119,7 +119,7 @@ export default function CheckoutPage() {
       />
 
       {status === 'success' && (
-        <div className="mb-6 flex flex-wrap items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+        <div className="mb-5 flex flex-wrap items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-700 sm:text-sm">
           <span>Order placed successfully! We emailed a confirmation receipt.</span>
           {lastOrder && (
             <button
@@ -134,7 +134,7 @@ export default function CheckoutPage() {
       )}
 
       <div className="grid grid-cols-1 gap-6 md:[grid-template-columns:1.4fr_1fr]">
-        <section className="space-y-5 rounded-2xl border border-stone-200 bg-white p-5 text-stone-900 shadow-sm shadow-stone-900/5">
+        <section className="space-y-5 rounded-2xl border border-stone-200 bg-white p-4 text-stone-900 shadow-sm shadow-stone-900/5 sm:p-5">
           <p className="text-sm font-semibold text-stone-700">Shipping Details</p>
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -201,10 +201,10 @@ export default function CheckoutPage() {
               )}
             </div>
 
-            <button
+              <button
               type="submit"
               disabled={isDisabled}
-              className="w-full rounded-xl bg-orange-500 px-4 py-3 text-base font-semibold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-stone-400"
+                className="w-full rounded-xl bg-orange-500 px-4 py-2.5 text-base font-semibold text-white transition hover:bg-orange-600 disabled:cursor-not-allowed disabled:bg-stone-400"
             >
               Place Order
             </button>
@@ -213,7 +213,7 @@ export default function CheckoutPage() {
 
         <div className="space-y-4">
           <OrderSummary items={items} total={total} />
-          <div className="rounded-2xl border border-stone-200 bg-white p-4 text-sm text-stone-600 shadow-sm shadow-stone-900/5">
+          <div className="rounded-2xl border border-stone-200 bg-white p-3 text-xs text-stone-600 shadow-sm shadow-stone-900/5 sm:p-4 sm:text-sm">
             <p className="text-sm font-semibold text-stone-800">Need help?</p>
             <p className="mt-1 text-xs uppercase tracking-[0.3em] text-stone-400">Care</p>
             <p>+91 80 4000 0000 · care@nuance.store</p>

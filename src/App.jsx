@@ -65,8 +65,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen text-stone-900">
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 pb-16 pt-8 sm:px-6 lg:px-8">
-        <header className="group relative overflow-visible rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 px-6 py-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:overflow-hidden sm:px-8">
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-3 pb-20 pt-5 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
+        <header className="group relative overflow-visible rounded-[2.5rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 px-4 py-5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-500 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:overflow-hidden sm:px-8 sm:py-6">
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-purple-50/30 via-transparent to-blue-50/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           <div className="relative flex flex-wrap items-center justify-between gap-4">
             <div>
@@ -164,7 +164,7 @@ export default function App() {
           </div>
         </header>
 
-        <main className="mt-10 flex-1">
+        <main className="flex-1 sm:mt-10">
           <Outlet />
         </main>
       </div>

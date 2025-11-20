@@ -56,7 +56,7 @@ export default function CartPage() {
         subtitle="Review quantities, remove products, and continue to checkout."
       />
 
-      <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
+      <div className="grid gap-6 lg:grid-cols-[2fr,1fr] lg:gap-8">
         <div className="space-y-4">
           {items.map((item) => (
             <CartItem
@@ -69,7 +69,7 @@ export default function CartPage() {
           ))}
         </div>
 
-        <aside className="h-fit space-y-6 overflow-hidden rounded-[2rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 p-8 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl">
+        <aside className="h-fit space-y-6 overflow-hidden rounded-[2rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 p-5 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl sm:p-8">
           <div>
             <p className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-purple-400">Order Summary</p>
             <p className="font-serif mt-3 text-5xl font-semibold tracking-tight text-stone-900">{formatCurrency(total)}</p>

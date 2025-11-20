@@ -12,14 +12,14 @@ export default function CartItem({ item, onQuantityChange, onRemove, limits }) {
   }
 
   return (
-    <div className="group relative flex flex-col gap-5 overflow-hidden rounded-[2rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 p-6 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:flex-row sm:items-center">
+    <div className="group relative flex flex-col gap-5 overflow-hidden rounded-[2rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 p-4 text-stone-900 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(255,255,255,0.5)_inset] sm:flex-row sm:items-center sm:p-6">
       <div className="absolute inset-0 bg-linear-to-br from-purple-50/0 via-transparent to-blue-50/0 opacity-0 transition-opacity duration-300 group-hover:from-purple-50/30 group-hover:to-blue-50/15 group-hover:opacity-100" />
       <div className="relative flex items-center gap-5">
-        <div className="overflow-hidden rounded-2xl border border-stone-200/60 bg-linear-to-br from-stone-50 to-stone-100/50 p-4 shadow-sm">
+        <div className="overflow-hidden rounded-2xl border border-stone-200/60 bg-linear-to-br from-stone-50 to-stone-100/50 p-3 shadow-sm sm:p-4">
         <img
           src={item.image}
           alt={item.title}
-            className="h-24 w-24 object-contain transition-transform duration-500 group-hover:scale-110"
+            className="h-20 w-20 object-contain transition-transform duration-500 group-hover:scale-110 sm:h-24 sm:w-24"
           loading="lazy"
         />
         </div>

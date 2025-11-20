@@ -6,8 +6,8 @@ export default function OrderSummary({ items, total }) {
   const grandTotal = total + shipping
 
   return (
-    <aside className="rounded-[2rem] border border-stone-200 bg-white p-6 text-stone-900 shadow-sm shadow-stone-900/5">
-      <h3 className="text-lg font-semibold">Order Summary</h3>
+    <aside className="rounded-[2rem] border border-stone-200 bg-white p-5 text-stone-900 shadow-sm shadow-stone-900/5 sm:p-6">
+      <h3 className="text-base font-semibold sm:text-lg">Order Summary</h3>
       <ul className="mt-4 space-y-2 text-sm text-stone-500">
         {items.map((item) => (
           <li key={item.id} className="flex justify-between">

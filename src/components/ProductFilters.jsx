@@ -7,11 +7,11 @@ export default function ProductFilters({
   onCategoryChange,
 }) {
   return (
-    <section className="mb-12 space-y-6 overflow-hidden rounded-[2rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 px-8 py-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl">
+    <section className="my-5 space-y-5 overflow-hidden rounded-[2rem] border border-white/60 bg-linear-to-br from-white/95 via-white/90 to-white/80 px-5 py-5 text-[0.95rem] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(255,255,255,0.5)_inset] backdrop-blur-xl sm:mb-12 sm:space-y-6 sm:px-8 sm:py-6">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end">
         <label className="flex flex-1 flex-col text-[0.65rem] font-medium tracking-[0.25em] text-stone-400">
           SEARCH COLLECTION
-          <div className="mt-2 flex items-center gap-3 rounded-2xl border border-stone-200/60 bg-linear-to-br from-white to-stone-50/30 px-5 py-3.5 shadow-sm backdrop-blur-sm transition-all duration-300 focus-within:border-purple-300/60 focus-within:shadow-md">
+          <div className="mt-2 flex items-center gap-3 rounded-2xl border border-stone-200/60 bg-linear-to-br from-white to-stone-50/30 px-4 py-3 shadow-sm backdrop-blur-sm transition-all duration-300 focus-within:border-purple-300/60 focus-within:shadow-md sm:px-5 sm:py-3.5">
             <span className="text-xl text-stone-300">⌕</span>
             <input
               type="search"
@@ -28,7 +28,7 @@ export default function ProductFilters({
           <select
             value={activeCategory}
             onChange={(event) => onCategoryChange(event.target.value)}
-            className="mt-2 cursor-pointer rounded-2xl border border-stone-200/60 bg-linear-to-br from-white to-stone-50/30 px-5 py-3.5 text-base font-medium text-stone-900 shadow-sm backdrop-blur-sm outline-none transition-all duration-300 hover:border-purple-300/60 hover:shadow-md"
+            className="mt-2 cursor-pointer rounded-2xl border border-stone-200/60 bg-linear-to-br from-white to-stone-50/30 px-4 py-3 text-base font-medium text-stone-900 shadow-sm backdrop-blur-sm outline-none transition-all duration-300 hover:border-purple-300/60 hover:shadow-md sm:px-5 sm:py-3.5"
           >
             <option value="all">All categories</option>
             {categories.map((category) => (
@@ -48,7 +48,7 @@ export default function ProductFilters({
               key={categoryValue}
               type="button"
               onClick={() => onCategoryChange(categoryValue)}
-              className={`rounded-full px-5 py-2.5 text-sm font-medium capitalize transition-all duration-300 ${
+              className={`rounded-full px-4 py-2 text-sm font-medium capitalize transition-all duration-300 sm:px-5 sm:py-2.5 ${
                 isActive
                   ? 'bg-linear-to-br from-stone-900 to-stone-700 text-white shadow-lg shadow-stone-900/25 hover:shadow-xl hover:shadow-stone-900/30'
                   : 'border border-stone-200/60 bg-white/50 text-stone-600 backdrop-blur-sm hover:scale-105 hover:border-purple-200/60 hover:bg-white hover:text-stone-900 hover:shadow-md'
