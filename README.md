@@ -1,16 +1,51 @@
-# React + Vite
+# Nuance
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+a luxury e-commerce experience built with React and Vite. Minimal, elegant, and thoughtfully designed.
 
-Currently, two official plugins are available:
+**Live site:** https://nua-nce.vercel.app/
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+runs on `http://localhost:5173` by default.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Design Decisions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Luxury-first approach:** Went with a premium aesthetic using glass-morphism, subtle gradients, and refined typography. 
+
+**State management:** Used Zustand for cart state - simple, no boilerplate, and works great with localStorage persistence. The cart syncs automatically across tabs.
+
+**API:** FakeStore API for product data. Wrapped it with a simple client that handles caching and error states. Could swap it out for a real backend without much hassle.
+
+## Trade-offs
+
+**Client-side routing only:** Using React Router for navigation, but no SSR. 
+
+**Local storage for cart:** Persists cart in browser storage. Simple and works offline, but doesn't sync across devices. Would need a backend for that.
+
+**No image optimization:** Product images load directly from the API without a CDN with image transforms.
+
+## Bonus Enhancements
+
+- **Toast notifications** - Custom toast system with context provider, different variants (success, danger, etc.)
+- **Download your bill** - After placing order, download your custom bill pdf
+- **Skeleton loading states** - Proper loading skeletons for products and product details
+
+- **Responsive design** - Mobile-first, works great on all screen sizes
+- **Error boundaries** - Graceful error handling with retry functionality
+- **Pagination** - Clean pagination component for product listings
+- **Newsletter modal** - First-visit modal with localStorage persistence
+- **Search & filters** - Real-time search with category filtering
+- **Cart persistence** - Cart survives page refreshes via localStorage
+
+## Tech Stack
+
+React, Vite, React Router, Zustand (state),  Tailwind CSS, Axios (API client)
+
+
+
+Built with attention to detail. Enjoy.
