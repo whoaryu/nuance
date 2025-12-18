@@ -43,7 +43,7 @@ export default function CartPage() {
         title="Your cart is empty"
         message="Add a couple of products to see them listed here."
         actionLabel="Browse products"
-        onAction={() => navigate('/')}
+        onAction={() => navigate('/shop')}
         illustration={<EmptyBagIllustration />}
       />
     )
@@ -79,7 +79,7 @@ export default function CartPage() {
           </div>
           <button
             type="button"
-            onClick={() => navigate('/checkout')}
+            onClick={() => navigate('/shop/checkout')}
             className="group/checkout w-full rounded-2xl bg-linear-to-br from-stone-900 to-stone-700 px-6 py-4 text-base font-semibold text-white shadow-lg shadow-stone-900/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/30"
           >
             <span className="flex items-center justify-center gap-2">

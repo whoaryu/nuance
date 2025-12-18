@@ -6,9 +6,9 @@ import NewsletterModal from './components/NewsletterModal'
 
 // main navigation items
 const navItems = [
-  { label: 'Collection', to: '/' },
-  { label: 'Bag', to: '/cart' },
-  { label: 'Checkout', to: '/checkout' },
+  { label: 'Collection', to: '/shop' },
+  { label: 'Bag', to: '/shop/cart' },
+  { label: 'Checkout', to: '/shop/checkout' },
 ]
 
 // trust badges shown in header
@@ -39,8 +39,8 @@ export default function App() {
   
   // check if a nav item is active based on current route
   const isActivePath = (path) => {
-    if (path === '/') {
-      return location.pathname === '/'
+    if (path === '/shop') {
+      return location.pathname === '/shop' || location.pathname.startsWith('/shop/product')
     }
     return location.pathname.startsWith(path)
   }
@@ -70,8 +70,10 @@ export default function App() {
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-purple-50/30 via-transparent to-blue-50/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
           <div className="relative flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="font-serif text-2xl font-semibold tracking-tight text-stone-900">Nuance</p>
-              <p className="text-[0.65rem] uppercase tracking-[0.2em] text-stone-400">Curated Collection</p>
+              <Link to="/" className="block hover:opacity-80 transition-opacity">
+                <p className="font-serif text-2xl font-semibold tracking-tight text-stone-900">Nuance</p>
+                <p className="text-[0.65rem] uppercase tracking-[0.2em] text-stone-400">Curated Collection</p>
+              </Link>
             </div>
 
             <div className="hidden flex-1 items-center justify-center gap-3 rounded-2xl bg-linear-to-r from-stone-50/50 to-stone-100/30 px-4 py-3 text-xs text-stone-600 backdrop-blur-sm sm:flex">
@@ -103,7 +105,7 @@ export default function App() {
             </button>
 
             <NavLink
-              to="/cart"
+              to="/shop/cart"
               onClick={closeMenu}
               className="group/cart flex items-center gap-3 rounded-full border border-stone-200/60 bg-linear-to-br from-white to-stone-50/50 px-4 py-2 text-sm font-medium text-stone-600 shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-purple-200/60 hover:text-stone-900 hover:shadow-md"
             >
@@ -169,11 +171,11 @@ export default function App() {
         </main>
       </div>
       {(() => {
-        const hideFloatingBag = location.pathname.startsWith('/cart') || location.pathname.startsWith('/checkout')
+        const hideFloatingBag = location.pathname.startsWith('/shop/cart') || location.pathname.startsWith('/shop/checkout')
         if (hideFloatingBag) return null
         return (
           <Link
-            to="/cart"
+            to="/shop/cart"
             aria-label="Open shopping bag"
             className="fixed bottom-6 right-4 z-30 sm:hidden"
           >
